@@ -7,9 +7,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './answer.css';
 
-const Answer = (answer) => {
-	const { body, removeAnswer, id } = answer;
-	console.log(answer);
+const Answer = ({ answer, removeAnswer, postId }) => {
+	const { body, id } = answer;
+	// console.log(postId);
 
 	return (
 		<div>
@@ -17,12 +17,12 @@ const Answer = (answer) => {
 				<Modal.Header>
 					<h5>{body}</h5>
 
-					<Button onClick={() => removeAnswer(id)} variant='danger'>
+					<Button onClick={() => removeAnswer(id, postId)} variant='danger'>
 						Delete Answer
 					</Button>
 				</Modal.Header>
 			</div>
-			{}
+
 			<Modal.Header as='h6'>Comments</Modal.Header>
 
 			{answer.comments.map((comment, index) => (
@@ -34,9 +34,11 @@ const Answer = (answer) => {
 	);
 };
 
+// change the id
+
 const mapDispatchToProps = (dispatch) => {
 	return {
-		removeAnswer: (id) => dispatch(removeAnswer(id)),
+		removeAnswer: (id, postId) => dispatch(removeAnswer(id, postId)),
 	};
 };
 

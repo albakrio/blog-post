@@ -26,10 +26,11 @@ export const removePost = (toBeDeleted) => {
 	};
 };
 
-export const removeAnswer = (toBeDeleted) => {
+export const removeAnswer = (toBeDeleted, postId) => {
 	return {
 		type: DELETE_ANSWER,
 		toBeDeleted,
+		postId,
 	};
 };
 

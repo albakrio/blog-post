@@ -13,7 +13,6 @@ const Posts = ({ postsData, removePost }) => {
 	const { posts } = postsData;
 
 	const [toggleNewPost, setToggleNewPost] = useState(false);
-	console.log(posts);
 
 	const postItems = posts
 		.filter((post, index) => index < 10)

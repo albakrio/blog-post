@@ -44,8 +44,9 @@ const postsDataReducer = (state = initialState, action) => {
 		case DELETE_ANSWER:
 			const newPosts = state.posts.map((post) => {
 				const answerToBeDeleted = post.answers.find(
-					({ id }) => id === action.toBeDeleted
+					({ id }) => id === action.toBeDeleted && post.id === action.postId
 				);
+
 				if (answerToBeDeleted) {
 					const newAnswers = [
 						...post.answers.filter(({ id }) => id !== action.toBeDeleted),
@@ -54,33 +55,33 @@ const postsDataReducer = (state = initialState, action) => {
 				}
 				return post;
 			});
+
 			return {
 				...state,
 				posts: newPosts,
 			};
 
 		case DELETE_COMMENT:
-			const newPosts11 = state.posts.map((post) => {
-				post.answers.map((answer) => {
-					const commentToBeDeleted = answer.comments.find(
-						({ id }) => id === action.toBeDeleted
-					);
+		// const newPosts2 = state.posts[0].map((post) => {
+		// 	const answers = post.answers.map((answer) => answer.body);
 
-					if (commentToBeDeleted) {
-						const newComments = [
-							...post.answers.comments.filter(
-								({ id }) => id !== action.toBeDeleted
-							),
-						];
-						post.answers.comments = [...newComments];
-					}
-					return post;
-				});
-				return {
-					...state,
-					posts: newPosts11,
-				};
-			});
+		// 	console.log(answers);
+
+		// if (commentToBeDeleted) {
+		// 	const newComments = [
+		// 		...answer.comments.filter(({ id }) => id !== action.toBeDeleted),
+		// 	];
+		// 	console.log(newComments);
+
+		// 	answer.comments = [...newComments];
+		// }
+		// // change later for answer
+		// return post;
+		// });
+		// return {
+		// 	...state,
+		// 	posts: newPosts2,
+		// };
 
 		default:
 			return state;

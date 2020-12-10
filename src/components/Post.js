@@ -79,7 +79,7 @@ const Post = (item) => {
 			{toggleAnswers &&
 				answers.map((answer, index) => (
 					<React.Fragment key={`${index}-${answer.id}`}>
-						<Answer {...answer} />
+						<Answer postId={id} answer={answer} />
 					</React.Fragment>
 				))}
 

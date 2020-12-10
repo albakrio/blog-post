@@ -6,7 +6,7 @@ export default {
 			body: 'title body',
 			answers: [
 				{
-					id: '1',
+					id: 1,
 					body: 'answer 1',
 					comments: [
 						{
@@ -24,7 +24,7 @@ export default {
 					],
 				},
 				{
-					id: '2',
+					id: 2,
 					body: 'answer2',
 					comments: [
 						{
@@ -42,7 +42,7 @@ export default {
 					],
 				},
 				{
-					id: '3',
+					id: 3,
 					body: 'answer3',
 					comments: [
 						{
@@ -67,7 +67,7 @@ export default {
 			body: 'cds/klfi4uio3ghg4hgjk',
 			answers: [
 				{
-					id: '1',
+					id: 1,
 					body: 'cnm,xvhefjbhvj',
 					comments: [
 						{
@@ -85,7 +85,7 @@ export default {
 					],
 				},
 				{
-					id: '2',
+					id: 2,
 					body: 'try4trytryr',
 					comments: [
 						{
@@ -103,7 +103,7 @@ export default {
 					],
 				},
 				{
-					id: '3',
+					id: 3,
 					body: 'ooooi4to34jti45uit45thui',
 					comments: [
 						{
@@ -128,7 +128,7 @@ export default {
 			body: 'nckjevnjhgjghjhgjghgjhg',
 			answers: [
 				{
-					id: '1',
+					id: 1,
 					body: 'rejhgjkgn',
 					comments: [
 						{
@@ -146,7 +146,7 @@ export default {
 					],
 				},
 				{
-					id: '2',
+					id: 2,
 					body: 'rkl4u5gtuhj5t',
 					comments: [
 						{
@@ -164,7 +164,7 @@ export default {
 					],
 				},
 				{
-					id: '3',
+					id: 3,
 					body: 'ji34i2tjiojt',
 					comments: [
 						{
