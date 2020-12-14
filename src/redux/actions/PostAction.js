@@ -34,9 +34,11 @@ export const removeAnswer = (toBeDeleted, postId) => {
 	};
 };
 
-export const removeComment = (toBeDeleted) => {
+export const removeComment = (toBeDeleted, answerId, postId) => {
 	return {
 		type: DELETE_COMMENT,
 		toBeDeleted,
+		postId,
+		answerId,
 	};
 };

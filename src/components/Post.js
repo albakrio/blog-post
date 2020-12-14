@@ -8,6 +8,11 @@ import Modal from 'react-bootstrap/Modal';
 import FormInput from './form-input/FormInput';
 import { editPost, removePost } from '../redux/actions/PostAction';
 
+// const toggledAnswers = {
+// 	[post.id]: false,
+// }
+// toggledAnswers = {...toggledAnswers,toggledAnswers[post.id]: true}
+
 const Post = (item) => {
 	const { title, body, id, answers, editPost, removePost } = item;
 
@@ -79,7 +84,13 @@ const Post = (item) => {
 			{toggleAnswers &&
 				answers.map((answer, index) => (
 					<React.Fragment key={`${index}-${answer.id}`}>
-						<Answer postId={id} answer={answer} />
+						<Answer
+							key={`${id}-${Math.random()}`}
+							postId={id}
+							answer={answer}
+							toggleAnswers={toggleAnswers}
+							setToggleAnswers={setToggleAnswers}
+						/>
 					</React.Fragment>
 				))}
 

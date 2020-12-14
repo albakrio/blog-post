@@ -1,3 +1,4 @@
+import produce from 'immer';
 import {
 	DELETE_POST,
 	NEW_POSTS,
@@ -14,7 +15,6 @@ const initialState = {
 // state looks like this:  state = {posts:[{},{},{}]}
 
 const postsDataReducer = (state = initialState, action) => {
-	//const post = action.newPost;
 	switch (action.type) {
 		case NEW_POSTS:
 			return {
@@ -46,6 +46,7 @@ const postsDataReducer = (state = initialState, action) => {
 				const answerToBeDeleted = post.answers.find(
 					({ id }) => id === action.toBeDeleted && post.id === action.postId
 				);
+				console.log(answerToBeDeleted);
 
 				if (answerToBeDeleted) {
 					const newAnswers = [
@@ -62,26 +63,37 @@ const postsDataReducer = (state = initialState, action) => {
 			};
 
 		case DELETE_COMMENT:
-		// const newPosts2 = state.posts[0].map((post) => {
-		// 	const answers = post.answers.map((answer) => answer.body);
+			const newPosts00 = state.posts.map((post) => {
+				return {
+					...post,
+					answers: post.answers.map((answer) => {
+						const commentToBeDeleted = answer.comments.find(
+							({ id }) =>
+								id == action.toBeDeleted &&
+								answer.id == action.answerId &&
+								post.id == action.postId
+						);
+						// console.log(commentToBeDeleted);
 
-		// 	console.log(answers);
+						if (commentToBeDeleted) {
+							const newComments = [
+								...answer.comments.filter(
+									({ id }) => id !== commentToBeDeleted.id
+								),
+							];
 
-		// if (commentToBeDeleted) {
-		// 	const newComments = [
-		// 		...answer.comments.filter(({ id }) => id !== action.toBeDeleted),
-		// 	];
-		// 	console.log(newComments);
+							answer.comments = [...newComments];
+						}
+						console.log({ answer });
+						return answer;
+					}),
+				};
+			});
 
-		// 	answer.comments = [...newComments];
-		// }
-		// // change later for answer
-		// return post;
-		// });
-		// return {
-		// 	...state,
-		// 	posts: newPosts2,
-		// };
+			return {
+				...state,
+				posts: [...newPosts00],
+			};
 
 		default:
 			return state;

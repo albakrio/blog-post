@@ -18,7 +18,7 @@ const Posts = ({ postsData, removePost }) => {
 		.filter((post, index) => index < 10)
 		.map((item, index) => (
 			<React.Fragment key={`${item.index}-${item.id}`}>
-				<Post {...item} />
+				<Post key={`${item.id}-${Math.random()}`} {...item} />
 			</React.Fragment>
 		));
 

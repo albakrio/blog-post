@@ -5,9 +5,12 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Button from 'react-bootstrap/Button';
 
-import {removeComment} from '../redux/actions/PostAction'
+import { removeComment } from '../redux/actions/PostAction';
 
-const Comment = ({ body, id, removeComment }) => {
+const Comment = ({ comment, answerId, postId, removeComment }) => {
+	const { body, id } = comment;
+	// console.log(postId, answerId);
+
 	return (
 		<div>
 			<Card>
@@ -15,7 +18,10 @@ const Comment = ({ body, id, removeComment }) => {
 					<ListGroupItem>{body}</ListGroupItem>
 				</ListGroup>
 			</Card>
-			<Button onClick={() => removeComment(id)} variant='danger'>
+			<Button
+				onClick={() => removeComment(id, answerId, postId)}
+				variant='danger'
+			>
 				Delete Comment
 			</Button>
 		</div>
@@ -24,7 +30,8 @@ const Comment = ({ body, id, removeComment }) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		removeComment: (id) => dispatch(removeComment(id)),
+		removeComment: (id, answerId, postId) =>
+			dispatch(removeComment(id, answerId, postId)),
 	};
 };
 

@@ -7,9 +7,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './answer.css';
 
-const Answer = ({ answer, removeAnswer, postId }) => {
+const Answer = ({
+	answer,
+	removeAnswer,
+	postId,
+	toggleAnswers,
+	setToggleAnswers,
+}) => {
 	const { body, id } = answer;
-	// console.log(postId);
+	console.log(toggleAnswers);
 
 	return (
 		<div>
@@ -17,7 +23,13 @@ const Answer = ({ answer, removeAnswer, postId }) => {
 				<Modal.Header>
 					<h5>{body}</h5>
 
-					<Button onClick={() => removeAnswer(id, postId)} variant='danger'>
+					<Button
+						variant='danger'
+						onClick={() => {
+							removeAnswer(id, postId);
+							setToggleAnswers(!toggleAnswers);
+						}}
+					>
 						Delete Answer
 					</Button>
 				</Modal.Header>
@@ -27,14 +39,12 @@ const Answer = ({ answer, removeAnswer, postId }) => {
 
 			{answer.comments.map((comment, index) => (
 				<React.Fragment key={`${index}-${comment.id}`}>
-					<Comment {...comment} />
+					<Comment comment={comment} postId={postId} answerId={id} />
 				</React.Fragment>
 			))}
 		</div>
 	);
 };
-
-// change the id
 
 const mapDispatchToProps = (dispatch) => {
 	return {
